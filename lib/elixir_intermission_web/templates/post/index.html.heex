@@ -1,0 +1,10 @@
+<section class="row">
+  <article class="column">
+    <h2>Posts</h2>
+  <ul>
+    <%= for post <- @posts do %>
+      <li><strong><%= post.title %></strong>: <%= post.content %> by <%= post.author %></li>
+    <% end %>
+  </ul>
+  </article>
+</section>

@@ -18,6 +18,7 @@ defmodule ElixirIntermissionWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/posts", PostController, only: [:index]
   end
 
   # Other scopes may use custom stacks.

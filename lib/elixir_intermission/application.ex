@@ -10,6 +10,7 @@ defmodule ElixirIntermission.Application do
     children = [
       # Start the Ecto repository
       ElixirIntermission.Repo,
+
       # Start the Telemetry supervisor
       ElixirIntermissionWeb.Telemetry,
       # Start the PubSub system

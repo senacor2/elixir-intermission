@@ -22,3 +22,6 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 ## Database
   * Ecto Docs: https://hexdocs.pm/ecto/Ecto.html
   * How To: https://elixirschool.com/en/lessons/ecto/basics
+  * Create Migrations `mix ecto.gen.migration my_migration`
+  * Run Migration `mix ecto.migrate`
+  * Reset DB `mix ecto.reset`

@@ -7,6 +7,7 @@ defmodule ElixirIntermission.Blog.Post do
     field :content, :string
     field :title, :string
     field :image_ref, :string
+    field :image_link, :string, virtual: true
 
     timestamps()
   end

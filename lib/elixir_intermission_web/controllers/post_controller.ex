@@ -27,7 +27,10 @@ defmodule ElixirIntermissionWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Blog.get_post!(id)
+    post =
+      Blog.get_post!(id)
+      |> add_image_url()
+
     render(conn, "show.html", post: post)
   end
 
@@ -37,6 +40,7 @@ defmodule ElixirIntermissionWeb.PostController do
     render(conn, "edit.html", post: post, changeset: changeset)
   end
 
+  @spec update(Plug.Conn.t(), map) :: Plug.Conn.t()
   def update(conn, %{"id" => id, "post" => post_params}) do
     post = Blog.get_post!(id)
 
@@ -58,5 +62,21 @@ defmodule ElixirIntermissionWeb.PostController do
     conn
     |> put_flash(:info, "Post deleted successfully.")
     |> redirect(to: Routes.post_path(conn, :index))
+  end
+
+  defp add_image_url(post) do
+    if post.image_ref do
+      redirectResponse =
+        "https://picsum.photos/seed/#{post.image_ref}/200/300"
+        |> HTTPoison.get!()
+      headers = Enum.into(redirectResponse.headers, %{})
+
+      %{post | image_link: headers["location"]}
+    else
+      default =
+        "https://i.picsum.photos/id/4/200/300.jpg?hmac=y6_DgDO4ccUuOHUJcEWirdjxlpPwMcEZo7fz1MpuaWg"
+
+      %{post | image_link: default}
+    end
   end
 end

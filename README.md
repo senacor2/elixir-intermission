@@ -25,6 +25,8 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Create Migrations `mix ecto.gen.migration my_migration`
   * Run Migration `mix ecto.migrate`
   * Reset DB `mix ecto.reset`
+  * Ecto does not support lazy loading
+  * Ecto Changeset -> Phoenix Forms
 
 
 ## Routing

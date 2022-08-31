@@ -30,7 +30,7 @@ defmodule ElixirIntermissionWeb.PostController do
     post =
       Blog.get_post!(id)
       |> add_image_url()
-
+    IO.puts post.image_link
     render(conn, "show.html", post: post)
   end
 
@@ -70,7 +70,7 @@ defmodule ElixirIntermissionWeb.PostController do
         "https://picsum.photos/seed/#{post.image_ref}/200/300"
         |> HTTPoison.get!()
       headers = Enum.into(redirectResponse.headers, %{})
-
+      IO.puts headers["location"]
       %{post | image_link: headers["location"]}
     else
       default =

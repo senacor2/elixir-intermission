@@ -13,7 +13,8 @@ defmodule ElixirIntermission.BlogFixtures do
       |> Enum.into(%{
         author: "some author",
         content: "some content",
-        title: "some title"
+        title: "some title",
+        image_ref: ""
       })
       |> ElixirIntermission.Blog.create_post()
 

@@ -16,6 +16,6 @@ defmodule ElixirIntermission.Blog.Post do
   def changeset(post, attrs) do
     post
     |> cast(attrs, [:title, :content, :author, :image_ref])
-    |> validate_required([:title, :content, :author, :image_ref])
+    |> validate_required([:title, :content, :author])
   end
 end

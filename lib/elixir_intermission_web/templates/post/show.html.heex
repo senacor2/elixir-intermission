@@ -9,7 +9,7 @@
 
 
   <%= if @post.image_link do %>
-   <%= raw "<img src=\"#{@post.image_link}\">" %>
+   <%=  img_tag(@post.image_link)  %>
   <% end %>
 
 
